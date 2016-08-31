@@ -1,0 +1,19 @@
+---
+spring:
+  application:
+    name: order-microservice
+  cloud:
+    config:
+      uri: http://localhost:8080 
+     
+---
+#Allows Consul to recognize two apps of the same type on the same host as separate instances
+spring:
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${spring.applicaton.instance_id:${random.value}}
+
+#Selects any available ports             
+server:
+  port: ${PORT:${SERVER_PORT:0}}
