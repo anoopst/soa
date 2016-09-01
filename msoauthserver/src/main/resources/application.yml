@@ -1,0 +1,13 @@
+zuul:
+  # Any url exposed would be prefixed with /services
+  #prefix: /services
+  # set alias and route based on uri 
+  routes:
+    order_service:
+     path: /orderservice/**
+     serviceId: order-microservice
+    manufacturer_service:
+     path: /manufacturerservice/**
+     serviceId: manufacturer-microservice 
+  ignored-services: '*'
+    
