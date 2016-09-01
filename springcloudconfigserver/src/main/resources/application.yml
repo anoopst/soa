@@ -4,6 +4,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/anoopst/ConfigData1
+          uri: https://github.com/krishnamurthypradeep/ConfigData1
           searchPaths: ConfigData1
             

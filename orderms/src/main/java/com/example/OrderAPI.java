@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,12 @@ import com.example.model.Order;
 import com.example.repository.OrderRepository;
 
 @RestController
+@ConfigurationProperties(prefix="newConfig")
+@RefreshScope()
 public class OrderAPI {
 
+	private String data;
+	
 	@Autowired
 	private OrderRepository orderRepository;
 
@@ -47,9 +53,19 @@ public class OrderAPI {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<Order>> findAll() {
 		List<Order> orders =  new ArrayList<>();
-		orders.add(new Order(1,"Local Order", new Date(),true));
+		orders.add(new Order(1,data, new Date(),true));
 		return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
 		//return new ResponseEntity<List<Order>>(orderRepository.findAll(), HttpStatus.OK);
 	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+	
 	
 }
