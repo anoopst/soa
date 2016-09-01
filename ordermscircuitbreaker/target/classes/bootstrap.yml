@@ -1,0 +1,11 @@
+---
+spring:
+  application:
+    name: order-circuitbreaker-microservice
+  cloud:
+    config:
+      uri: http://localhost:8080 
+     
+#Selects any available ports             
+server:
+  port: 8007
