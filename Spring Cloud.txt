@@ -1,0 +1,10 @@
+Spring STS 3.8.1
+JAva 8
+Mongo Db
+RabbitMQ
+GitHub 
+Docker
+
+Evolution from RPC to microservices
+What is Jade
+Boomerang --> plugin in chrome t test web service
